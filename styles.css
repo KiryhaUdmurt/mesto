@@ -1,0 +1,22 @@
+@import url(./fonts/fonts.css);
+
+.root {
+  background-color: black;
+}
+
+.page {
+  max-width: 1280px;
+  min-width: 320px;
+  margin: 0 auto;
+}
+
+.header {
+  max-width: 880px;
+  height: 74px;
+  margin: 45px auto 0;
+  border-bottom: 1px solid rgba(84, 84, 84, .7);
+}
+
+.header__logo {
+  max-width: 142px;
+}
