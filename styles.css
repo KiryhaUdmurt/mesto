@@ -76,7 +76,13 @@
 }
 
 .profile__edit-button {
-    width: 24px;
+ background: none;
+ cursor: pointer;
+ padding: 0;
+}
+
+.profile__edit-button-img {
+  width: 24px;
 }
 
 .profile__name {
@@ -96,6 +102,12 @@
   line-height: 22px;
   color: #ffffff;
   margin: 0;
+}
+
+.profile__add-button {
+  background: none;
+  cursor: pointer;
+  padding: 0;
 }
 
 .profile__add-button_big {
@@ -146,7 +158,7 @@
     font-size: 27px;
     line-height: 33px;
   }
-  .profile__edit-button {
+  .profile__edit-button-img {
     width: 18px;
   }
   .profile__status {
@@ -272,6 +284,7 @@
  position: fixed;
  top: 0;
  left: 0;
+ display: none;
 }
 
 .popup__container {
@@ -323,6 +336,7 @@ border: 0;
   font-weight: 400;
   font-size: 18px;
   line-height: 22px;
+  cursor: pointer;
 }
 
 .popup__close-icon {

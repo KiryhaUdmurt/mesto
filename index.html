@@ -22,17 +22,17 @@
             />
             <div class="profile__info">
               <p class="profile__name">Жак-Ив Кусто</p>
-              <a class="profile__edit-button-link" href="#">
+              <button class="profile__edit-button">
                 <img
-                  class="profile__edit-button"
+                  class="profile__edit-button-img"
                   src="./images/edit-button.svg"
                   alt="кнопка редактирования"
                 />
-              </a>
+              </button>
               <p class="profile__status">Исследователь океана</p>
             </div>
           </div>
-          <a class="profile__add-button-link" href="#">
+          <button class="profile__add-button">
             <img
               class="profile__add-button_small"
               src="./images/add-button-small.svg"
@@ -43,15 +43,15 @@
               src="./images/add-button-big.svg"
               alt="кнопка добавления"
             />
-          </a>
+          </button>
         </section>
-        <div class="popup">
+        <div class="popup popup_opened">
           <div class="popup__container">
             <p class="popup__title">Редактировать профиль</p>
             <form action="" class="popup__form">
               <input class="popup__name" type="text"/>
               <input class="popup__status" type="text"/>
-              <button class="popup__save-btn">Сохранить</button>
+              <button class="popup__save-btn" type="submit">Сохранить</button>
             </form>
             <img src="./images/close-icon.svg" alt="крестик" class="popup__close-icon" />
           </div>
