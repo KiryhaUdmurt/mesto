@@ -15,22 +15,22 @@
       <main class="content">
         <section class="profile">
           <div class="profile__flex-container">
-          <img
-            class="profile__img"
-            src="./images/profile-img.jpg"
-            alt="Аватар профиля"
-          />
-          <div class="profile__info">
-            <p class="profile__name">Жак-Ив Кусто</p>
-            <a class="profile__edit-button-link" href="#">
-              <img
-                class="profile__edit-button"
-                src="./images/edit-button.svg"
-                alt="кнопка редактирования"
-              />
-            </a>
-            <p class="profile__status">Исследователь океана</p>
-          </div>
+            <img
+              class="profile__img"
+              src="./images/profile-img.jpg"
+              alt="Аватар профиля"
+            />
+            <div class="profile__info">
+              <p class="profile__name">Жак-Ив Кусто</p>
+              <a class="profile__edit-button-link" href="#">
+                <img
+                  class="profile__edit-button"
+                  src="./images/edit-button.svg"
+                  alt="кнопка редактирования"
+                />
+              </a>
+              <p class="profile__status">Исследователь океана</p>
+            </div>
           </div>
           <a class="profile__add-button-link" href="#">
             <img
@@ -45,62 +45,130 @@
             />
           </a>
         </section>
+        <div class="popup">
+          <div class="popup__container">
+            <p class="popup__title">Редактировать профиль</p>
+            <form action="" class="popup__form">
+              <input class="popup__name" type="text"/>
+              <input class="popup__status" type="text"/>
+              <button class="popup__save-btn">Сохранить</button>
+            </form>
+            <img src="./images/close-icon.svg" alt="крестик" class="popup__close-icon" />
+          </div>
+        </div>
         <section class="elements">
-            <ul class="elements__list">
-                <li class="elements__item card">
-                    <img src="./images/izh.jpg" alt="Ижевск" class="card__img">
-                    <div class="card__img-bar">
-                        <p class="card__name">Карачаевск</p>
-                        <img src="./images/like-btn.svg" alt="кнопка нравится" class="card__like-button_disabled">
-                        <img src="./images/like-btn-active.svg" alt="активная кнопка нравится" class="card__like-button_active">
-                    </div>
-                </li>
-                <li class="elements__item card">
-                  <img src="./images/sarapul.jpg" alt="Сарапул" class="card__img">
-                    <div class="card__img-bar">
-                        <p class="card__name">Сарапул</p>
-                        <img src="./images/like-btn.svg" alt="кнопка нравится" class="card__like-button_disabled">
-                        <img src="./images/like-btn-active.svg" alt="активная кнопка нравится" class="card__like-button_active">
-                    </div>
-                </li>
-                <li class="elements__item card">
-                  <img src="./images/votkinsk.jpg" alt="Воткинск" class="card__img">
-                    <div class="card__img-bar">
-                        <p class="card__name">Воткинск</p>
-                        <img src="./images/like-btn.svg" alt="кнопка нравится" class="card__like-button_disabled">
-                        <img src="./images/like-btn-active.svg" alt="активная кнопка нравится" class="card__like-button_active">
-                    </div>
-                </li>
-                <li class="elements__item card">
-                  <img src="./images/glazov.jpg" alt="Глазов" class="card__img">
-                    <div class="card__img-bar">
-                        <p class="card__name">Глазов</p>
-                        <img src="./images/like-btn.svg" alt="кнопка нравится" class="card__like-button_disabled">
-                        <img src="./images/like-btn-active.svg" alt="активная кнопка нравится" class="card__like-button_active">
-                    </div>
-                </li>
-                <li class="elements__item card">
-                  <img src="./images/balezino.jpg" alt="Балезино" class="card__img">
-                    <div class="card__img-bar">
-                        <p class="card__name">Балезино</p>
-                        <img src="./images/like-btn.svg" alt="кнопка нравится" class="card__like-button_disabled">
-                        <img src="./images/like-btn-active.svg" alt="активная кнопка нравится" class="card__like-button_active">
-                    </div>
-                </li>
-                <li class="elements__item card">
-                  <img src="./images/mozhga.jpg" alt="Можга" class="card__img">
-                    <div class="card__img-bar">
-                        <p class="card__name">Можга</p>
-                        <img src="./images/like-btn.svg" alt="кнопка нравится" class="card__like-button_disabled">
-                        <img src="./images/like-btn-active.svg" alt="активная кнопка нравится" class="card__like-button_active">
-                    </div>
-                </li>
-            </ul>
+          <ul class="elements__list">
+            <li class="elements__item card">
+              <img src="./images/izh.jpg" alt="Ижевск" class="card__img" />
+              <div class="card__img-bar">
+                <p class="card__name">Ижевск</p>
+                <img
+                  src="./images/like-btn.svg"
+                  alt="кнопка нравится"
+                  class="card__like-button_disabled"
+                />
+                <img
+                  src="./images/like-btn-active.svg"
+                  alt="активная кнопка нравится"
+                  class="card__like-button_active"
+                />
+              </div>
+            </li>
+            <li class="elements__item card">
+              <img src="./images/sarapul.jpg" alt="Сарапул" class="card__img" />
+              <div class="card__img-bar">
+                <p class="card__name">Сарапул</p>
+                <img
+                  src="./images/like-btn.svg"
+                  alt="кнопка нравится"
+                  class="card__like-button_disabled"
+                />
+                <img
+                  src="./images/like-btn-active.svg"
+                  alt="активная кнопка нравится"
+                  class="card__like-button_active"
+                />
+              </div>
+            </li>
+            <li class="elements__item card">
+              <img
+                src="./images/votkinsk.jpg"
+                alt="Воткинск"
+                class="card__img"
+              />
+              <div class="card__img-bar">
+                <p class="card__name">Воткинск</p>
+                <img
+                  src="./images/like-btn.svg"
+                  alt="кнопка нравится"
+                  class="card__like-button_disabled"
+                />
+                <img
+                  src="./images/like-btn-active.svg"
+                  alt="активная кнопка нравится"
+                  class="card__like-button_active"
+                />
+              </div>
+            </li>
+            <li class="elements__item card">
+              <img src="./images/glazov.jpg" alt="Глазов" class="card__img" />
+              <div class="card__img-bar">
+                <p class="card__name">Глазов</p>
+                <img
+                  src="./images/like-btn.svg"
+                  alt="кнопка нравится"
+                  class="card__like-button_disabled"
+                />
+                <img
+                  src="./images/like-btn-active.svg"
+                  alt="активная кнопка нравится"
+                  class="card__like-button_active"
+                />
+              </div>
+            </li>
+            <li class="elements__item card">
+              <img
+                src="./images/balezino.jpg"
+                alt="Балезино"
+                class="card__img"
+              />
+              <div class="card__img-bar">
+                <p class="card__name">Балезино</p>
+                <img
+                  src="./images/like-btn.svg"
+                  alt="кнопка нравится"
+                  class="card__like-button_disabled"
+                />
+                <img
+                  src="./images/like-btn-active.svg"
+                  alt="активная кнопка нравится"
+                  class="card__like-button_active"
+                />
+              </div>
+            </li>
+            <li class="elements__item card">
+              <img src="./images/mozhga.jpg" alt="Можга" class="card__img" />
+              <div class="card__img-bar">
+                <p class="card__name">Можга</p>
+                <img
+                  src="./images/like-btn.svg"
+                  alt="кнопка нравится"
+                  class="card__like-button_disabled"
+                />
+                <img
+                  src="./images/like-btn-active.svg"
+                  alt="активная кнопка нравится"
+                  class="card__like-button_active"
+                />
+              </div>
+            </li>
+          </ul>
         </section>
       </main>
       <footer class="footer">
         <p class="footer__copyright">© 2022 Калинин Кирилл</p>
       </footer>
     </div>
-  </body> card
+  </body>
+  card
 </html>
