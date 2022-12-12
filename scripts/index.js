@@ -26,13 +26,15 @@ popUp.addEventListener('click', function(evt) {
     }
 });
 
+function closePopup() {
+    popUp.classList.remove('popup_opened');
+}
+
 function handleFormSubmit (evt) {
     evt.preventDefault();
     profileName.textContent = popupName.value;
     profileStatus.textContent = popupStatus.value;
-    saveButton.addEventListener('click', function(){
-        popUp.classList.remove('popup_opened');
-    });
+    closePopup();
 };
 
 popupForm.addEventListener('submit', handleFormSubmit);
