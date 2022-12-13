@@ -1,5 +1,5 @@
 .popup__close-btn {
-  background-image: url(../../../images/close-icon.png);
+  background-image: url(../../../images/close-icon.svg);
   width: 32px;
   height: 32px;
   background-color: transparent;
@@ -20,7 +20,7 @@
   .popup__close-btn {
     top: -41px;
     right: -6px;
-    background-image: url(../../../images/close-icon-mobile.png);
+    background-image: url(../../../images/close-icon-mobile.svg);
     background-position: center;
     background-repeat: no-repeat;
   }
