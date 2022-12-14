@@ -1,5 +1,5 @@
-.card__like-button {
-  background-image: url(../../../images/like-icon.svg);
+.card__like-button_active {
+  background-image: url(../../../../images/like-icon-active.svg);
   width: 23px;
   height: 20px;
   padding: 0;

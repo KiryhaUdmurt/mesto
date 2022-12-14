@@ -23,6 +23,7 @@
 @import url(../blocks/card/__img-bar/card__img-bar.css);
 @import url(../blocks/card/__img/card__img.css);
 @import url(../blocks/card/__like-button/card__like-button.css);
+@import url(../blocks/card/__like-button/_active/card__like-button_active.css);
 @import url(../blocks/card/__name/card__name.css);
 /* Footer */
 @import url(../blocks/footer/__copyright/footer__copyright.css);
