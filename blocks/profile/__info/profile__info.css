@@ -1,6 +1,5 @@
 .profile__info {
   max-width: 336px;
-  max-height: 73px;
   display: grid;
   grid-template-columns: 1fr 24px;
   align-items: baseline;
