@@ -1,0 +1,14 @@
+.add-card-popup__container {
+  width: 430px;
+  height: 330px;
+  background-color: white;
+  border-radius: 10px;
+  position: relative;
+}
+
+@media screen and (max-width: 425px) {
+  .add-card-popup__container {
+    width: 282px;
+    height: 322px;
+  }
+}

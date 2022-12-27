@@ -1,0 +1,12 @@
+.add-card-popup__form {
+  max-width: 358px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+@media screen and (max-width: 425px) {
+  .add-card-popup__form {
+    padding: 0 22px 0;
+  }
+}
