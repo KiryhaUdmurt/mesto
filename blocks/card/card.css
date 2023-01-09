@@ -6,4 +6,5 @@
   justify-content: flex-end;
   background-color: gray;
   border-radius: 10px;
+  position: relative;
 }

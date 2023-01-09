@@ -25,9 +25,10 @@
 @import url(../blocks/card/__like-button/card__like-button.css);
 @import url(../blocks/card/__like-button/_active/card__like-button_active.css);
 @import url(../blocks/card/__name/card__name.css);
+@import url(../blocks/card/__delete-btn/card__delete-btn.css);
 /* Footer */
 @import url(../blocks/footer/__copyright/footer__copyright.css);
-/* Edit-PopUp */
+/* PopUp */
 @import url(../blocks/popup/popup.css);
 @import url(../blocks/popup/__close-btn/popup__close-btn.css);
 @import url(../blocks/popup/__container/popup__container.css);
@@ -36,13 +37,7 @@
 @import url(../blocks/popup/__title/popup__title.css);
 @import url(../blocks/popup/_opened/popup_opened.css);
 @import url(../blocks/popup/__input/popup__input.css);
-/* Add-PopUp */
-@import url(../blocks/add-card-popup/add-card-popup.css);
-@import url(../blocks/add-card-popup/__close-btn/add-card-popup__close-btn.css);
-@import url(../blocks/add-card-popup/__container/add-card-popup__container.css);
-@import url(../blocks/add-card-popup/__form/add-card-popup__form.css);
-@import url(../blocks/add-card-popup/__input/add-card-popup__input.css);
-@import url(../blocks/add-card-popup/__save-btn/add-card-popup__save-btn.css);
-@import url(../blocks/add-card-popup/__title/add-card-popup__title.css);
-@import url(../blocks/add-card-popup/_opened/add-card-popup_opened.css);
+/* image-popup */
+@import url(../blocks/popup/__image/popup__image.css);
+@import url(../blocks/popup/__image-container/popup__image-container.css);
 
