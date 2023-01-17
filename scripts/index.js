@@ -109,9 +109,10 @@ const popupAddSave = popUpAdd.querySelector(".popup__save-btn");
 const popupAddClose = popUpAdd.querySelector(".popup__close-btn");
 
 // попап картинки
-// const popUpImage = document.querySelector('.popup__type_image');
-// const popupImageClose = popUpImage.querySelector('.popup__close-btn');
-// const imagePopup = popUpImage.querySelector('.popup__image');
+const popUpImage = document.querySelector('.popup__type_image');
+const popupImageClose = popUpImage.querySelector('.popup__close-btn');
+const imagePopup = popUpImage.querySelector('.popup__image');
+const imageFigcaption = popUpImage.querySelector('.popup__figcaption');
 
 // открытие попапа добавления
 const addButton = document.querySelector(".profile__add-button");
@@ -135,9 +136,8 @@ popUpAdd.addEventListener("click", function (evt) {
 function addCardHandleFormSubmit (evt) {
   evt.preventDefault();
   const cardElement = cardTemplate.querySelector(".card").cloneNode(true);
-  cardElement.querySelector(".card__img").src = popupAddLink.value;
-  cardElement.querySelector(".card__name").textContent = popupAddName.value;
-  cards.prepend(cardElement);
+  const newCard = {name: popupAddName.value, link: popupAddLink.value};
+  cards.prepend(getCard(newCard));
   closePopup(popUpAdd);
   popupAddForm.reset();
 };
