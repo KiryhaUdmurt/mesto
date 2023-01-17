@@ -1,6 +1,6 @@
 // объявление попапа имени и элементов профиля
 const editButton = document.querySelector(".profile__edit-button");
-const popUp = document.querySelector(".popup__type_profile");
+const popUp = document.querySelector(".popup_type_profile");
 const closeButton = popUp.querySelector(".popup__close-btn");
 const saveButton = popUp.querySelector(".popup__save-btn");
 const popupContainer = popUp.querySelector(".popup__container");
@@ -114,7 +114,7 @@ function renderCards() {
 renderCards();
 
 // объявление элементов попапа добавления
-const popUpAdd = document.querySelector(".popup__type_card");
+const popUpAdd = document.querySelector(".popup_type_card");
 const popupAddForm = popUpAdd.querySelector(".popup__form");
 const popupAddName = popUpAdd.querySelector(".popup__input_type_name");
 const popupAddLink = popUpAdd.querySelector(".popup__input_type_link");
@@ -122,7 +122,7 @@ const popupAddSave = popUpAdd.querySelector(".popup__save-btn");
 const popupAddClose = popUpAdd.querySelector(".popup__close-btn");
 
 // попап картинки
-const popUpImage = document.querySelector(".popup__type_image");
+const popUpImage = document.querySelector(".popup_type_image");
 const popupImageClose = popUpImage.querySelector(".popup__close-btn");
 const imagePopup = popUpImage.querySelector(".popup__image");
 const imageFigcaption = popUpImage.querySelector(".popup__figcaption");
