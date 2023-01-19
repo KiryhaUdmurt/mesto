@@ -1,14 +1,14 @@
 // объявление попапа имени и элементов профиля
-const editButton = document.querySelector(".profile__edit-button");
-const popUp = document.querySelector(".popup_type_profile");
-const closeButton = popUp.querySelector(".popup__close-btn");
-const saveButton = popUp.querySelector(".popup__save-btn");
-const popupContainer = popUp.querySelector(".popup__container");
+const popupProfileEditButton = document.querySelector(".profile__edit-button");
+const popUpProfile = document.querySelector(".popup_type_profile");
+const popupProfileCloseButton = popUpProfile.querySelector(".popup__close-btn");
+const popupProfileSaveButton = popUpProfile.querySelector(".popup__save-btn");
+const popupProfileContainer = popUpProfile.querySelector(".popup__container");
 const profileName = document.querySelector(".profile__name");
 const profileStatus = document.querySelector(".profile__status");
-const popupName = popUp.querySelector(".popup__input_type_name");
-const popupStatus = popUp.querySelector(".popup__input_type_status");
-const popupForm = popUp.querySelector(".popup__form");
+const popupProfileName = popUpProfile.querySelector(".popup__input_type_name");
+const popupProfileStatus = popUpProfile.querySelector(".popup__input_type_status");
+const popupProfileForm = popUpProfile.querySelector(".popup__form");
 
 // фунция закрытия
 function closePopup(popup) {
@@ -21,58 +21,31 @@ function openPopup(popup) {
 }
 
 // подстановка данных
-editButton.addEventListener("click", function () {
-  openPopup(popUp);
-  popupName.value = profileName.textContent;
-  popupStatus.value = profileStatus.textContent;
+popupProfileEditButton.addEventListener("click", function () {
+  openPopup(popUpProfile);
+  popupProfileName.value = profileName.textContent;
+  popupProfileStatus.value = profileStatus.textContent;
 });
 
-closeButton.addEventListener("click", function () {
-  closePopup(popUp);
+popupProfileCloseButton.addEventListener("click", function () {
+  closePopup(popUpProfile);
 });
 
-popUp.addEventListener("click", function (evt) {
+popUpProfile.addEventListener("click", function (evt) {
   if (evt.target === evt.currentTarget) {
-    closePopup(popUp);
+    closePopup(popUpProfile);
   }
 });
 
 // отправка формы
 function handleFormSubmit(evt) {
   evt.preventDefault();
-  profileName.textContent = popupName.value;
-  profileStatus.textContent = popupStatus.value;
-  closePopup(popUp);
+  profileName.textContent = popupProfileName.value;
+  profileStatus.textContent = popupProfileStatus.value;
+  closePopup(popUpProfile);
 }
 
-const editSubmit = popupForm.addEventListener("submit", handleFormSubmit);
-
-const initialCards = [
-  {
-    name: "Архыз",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg",
-  },
-  {
-    name: "Челябинская область",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg",
-  },
-  {
-    name: "Иваново",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg",
-  },
-  {
-    name: "Камчатка",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg",
-  },
-  {
-    name: "Холмогорский район",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg",
-  },
-  {
-    name: "Байкал",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg",
-  },
-];
+popupProfileForm.addEventListener("submit", handleFormSubmit);
 
 const cards = document.querySelector(".elements__list");
 const cardTemplate = document.querySelector(".card-template").content;
@@ -85,41 +58,38 @@ function getCard(item) {
   cardName.textContent = item.name;
   cardImage.alt = item.name;
 
-  const likeBtn = cardElement.querySelector(".card__like-button");
-  likeBtn.addEventListener("click", function () {
-    likeBtn.classList.toggle("card__like-button_active");
+  const cardLikeBtn = cardElement.querySelector(".card__like-button");
+  cardLikeBtn.addEventListener("click", function () {
+    cardLikeBtn.classList.toggle("card__like-button_active");
   });
 
-  const deleteBtn = cardElement.querySelector(".card__delete-btn");
-  deleteBtn.addEventListener("click", function () {
+  const cardDeleteBtn = cardElement.querySelector(".card__delete-btn");
+  cardDeleteBtn.addEventListener("click", function () {
     cardElement.remove();
   });
 
   cardImage.addEventListener("click", function () {
     openPopup(popUpImage);
     imagePopup.src = item.link;
+    imagePopup.alt = item.name;
     imageFigcaption.textContent = item.name;
   });
 
   return cardElement;
 }
 
-function renderCards() {
-  initialCards.forEach((item) => {
-    const cardHTML = getCard(item);
-    cards.append(cardHTML);
-  });
-}
-
-renderCards();
+initialCards.forEach((item) => {
+  const cardHTML = getCard(item);
+  cards.append(cardHTML);
+});
 
 // объявление элементов попапа добавления
-const popUpAdd = document.querySelector(".popup_type_card");
-const popupAddForm = popUpAdd.querySelector(".popup__form");
-const popupAddName = popUpAdd.querySelector(".popup__input_type_name");
-const popupAddLink = popUpAdd.querySelector(".popup__input_type_link");
-const popupAddSave = popUpAdd.querySelector(".popup__save-btn");
-const popupAddClose = popUpAdd.querySelector(".popup__close-btn");
+const popUpAddCard = document.querySelector(".popup_type_card");
+const popupAddForm = popUpAddCard.querySelector(".popup__form");
+const popupAddName = popUpAddCard.querySelector(".popup__input_type_name");
+const popupAddLink = popUpAddCard.querySelector(".popup__input_type_link");
+const popupAddSave = popUpAddCard.querySelector(".popup__save-btn");
+const popupAddClose = popUpAddCard.querySelector(".popup__close-btn");
 
 // попап картинки
 const popUpImage = document.querySelector(".popup_type_image");
@@ -139,31 +109,30 @@ popUpImage.addEventListener("click", function (evt) {
 });
 
 // открытие попапа добавления
-const addButton = document.querySelector(".profile__add-button");
+const popupAddCardButton = document.querySelector(".profile__add-button");
 
-addButton.addEventListener("click", function () {
-  openPopup(popUpAdd);
+popupAddCardButton.addEventListener("click", function () {
+  openPopup(popUpAddCard);
 });
 
 // закрытие попапа добавления
 popupAddClose.addEventListener("click", function () {
-  closePopup(popUpAdd);
+  closePopup(popUpAddCard);
 });
 
-popUpAdd.addEventListener("click", function (evt) {
+popUpAddCard.addEventListener("click", function (evt) {
   if (evt.target === evt.currentTarget) {
-    closePopup(popUpAdd);
+    closePopup(popUpAddCard);
   }
 });
 
 // отправка формы
 function addCardHandleFormSubmit(evt) {
   evt.preventDefault();
-  const cardElement = cardTemplate.querySelector(".card").cloneNode(true);
   const newCard = { name: popupAddName.value, link: popupAddLink.value };
   cards.prepend(getCard(newCard));
-  closePopup(popUpAdd);
+  closePopup(popUpAddCard);
   popupAddForm.reset();
 }
 
-const addSubmit = popupAddForm.addEventListener("submit", addCardHandleFormSubmit);
+popupAddForm.addEventListener("submit", addCardHandleFormSubmit);
