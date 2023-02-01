@@ -1,4 +1,5 @@
 // объявление попапа имени и элементов профиля
+const popups = document.querySelectorAll('.popup');
 const popupProfileEditButton = document.querySelector(".profile__edit-button");
 const popUpProfile = document.querySelector(".popup_type_profile");
 const popupProfileCloseButton = popUpProfile.querySelector(".popup__close-btn");
@@ -13,12 +14,14 @@ const popupProfileForm = popUpProfile.querySelector(".popup__form");
 // фунция закрытия
 function closePopup(popup) {
   popup.classList.remove("popup_opened");
-}
+  document.removeEventListener('keydown', handleEscClose);
+};
 
 // функция открытия
 function openPopup(popup) {
   popup.classList.add("popup_opened");
-}
+  document.addEventListener('keydown', handleEscClose);
+};
 
 // подстановка данных
 popupProfileEditButton.addEventListener("click", function () {
@@ -31,19 +34,13 @@ popupProfileCloseButton.addEventListener("click", function () {
   closePopup(popUpProfile);
 });
 
-popUpProfile.addEventListener("click", function (evt) {
-  if (evt.target === evt.currentTarget) {
-    closePopup(popUpProfile);
-  }
-});
-
 // отправка формы
 function handleFormSubmit(evt) {
   evt.preventDefault();
   profileName.textContent = popupProfileName.value;
   profileStatus.textContent = popupProfileStatus.value;
   closePopup(popUpProfile);
-}
+};
 
 popupProfileForm.addEventListener("submit", handleFormSubmit);
 
@@ -102,12 +99,6 @@ popupImageClose.addEventListener("click", function () {
   closePopup(popUpImage);
 });
 
-popUpImage.addEventListener("click", function (evt) {
-  if (evt.target === evt.currentTarget) {
-    closePopup(popUpImage);
-  }
-});
-
 // открытие попапа добавления
 const popupAddCardButton = document.querySelector(".profile__add-button");
 
@@ -120,12 +111,6 @@ popupAddClose.addEventListener("click", function () {
   closePopup(popUpAddCard);
 });
 
-popUpAddCard.addEventListener("click", function (evt) {
-  if (evt.target === evt.currentTarget) {
-    closePopup(popUpAddCard);
-  }
-});
-
 // отправка формы
 function addCardHandleFormSubmit(evt) {
   evt.preventDefault();
@@ -133,6 +118,24 @@ function addCardHandleFormSubmit(evt) {
   cards.prepend(getCard(newCard));
   closePopup(popUpAddCard);
   popupAddForm.reset();
-}
+  popupAddSave.setAttribute('disabled', true);
+  popupAddSave.classList.add('popup__save-btn_inactive');
+};
 
 popupAddForm.addEventListener("submit", addCardHandleFormSubmit);
+
+popups.forEach((popup) => {
+  popup.addEventListener('click', function(evt) {
+    if (evt.target === evt.currentTarget) {
+      closePopup(popup)
+    };
+  });
+});
+
+const handleEscClose = (evt) => {
+  if (evt.key === 'Escape') {
+    const openedPopup = document.querySelector('.popup_opened');
+    closePopup(openedPopup);
+  };
+};
+
