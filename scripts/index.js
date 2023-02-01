@@ -47,6 +47,7 @@ popupProfileForm.addEventListener("submit", handleFormSubmit);
 const cards = document.querySelector(".elements__list");
 const cardTemplate = document.querySelector(".card-template").content;
 
+// Обработка карточек
 function getCard(item) {
   const cardElement = cardTemplate.querySelector(".card").cloneNode(true);
   const cardImage = cardElement.querySelector(".card__img");
@@ -124,6 +125,7 @@ function addCardHandleFormSubmit(evt) {
 
 popupAddForm.addEventListener("submit", addCardHandleFormSubmit);
 
+// Закрытие по оверлею
 popups.forEach((popup) => {
   popup.addEventListener('click', function(evt) {
     if (evt.target === evt.currentTarget) {
@@ -132,6 +134,7 @@ popups.forEach((popup) => {
   });
 });
 
+// Закрытие с Esc
 const handleEscClose = (evt) => {
   if (evt.key === 'Escape') {
     const openedPopup = document.querySelector('.popup_opened');
