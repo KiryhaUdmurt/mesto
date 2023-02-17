@@ -1,5 +1,6 @@
 import { Card } from "./Card.js";
 import { initialCards } from "./initial-cards.js";
+import { FormValidator } from "./FormValidator.js";
 
 
 // объявление попапа имени и элементов профиля
@@ -14,6 +15,15 @@ const profileStatus = document.querySelector(".profile__status");
 const popupProfileName = popUpProfile.querySelector(".popup__input_type_name");
 const popupProfileStatus = popUpProfile.querySelector(".popup__input_type_status");
 const popupProfileForm = popUpProfile.querySelector(".popup__form");
+
+export const config = {
+  formSelector: '.popup__form',
+  inputSelector: '.popup__input',
+  submitButtonSelector: '.popup__save-btn',
+  inactiveButtonClass: 'popup__save-btn_inactive',
+  inputErrorClass: 'popup__input_type_error',
+  errorClass: 'popup__error-message_active'
+};
 
 // фунция закрытия
 function closePopup(popup) {
@@ -126,8 +136,7 @@ popupAddClose.addEventListener("click", function () {
 // отправка формы
 function addCardHandleFormSubmit(evt) {
   evt.preventDefault();
-  const newCard = { name: popupAddName.value, link: popupAddLink.value };
-  cards.prepend(getCard(newCard));
+  cards.prepend(createCard());
   closePopup(popUpAddCard);
   popupAddForm.reset();
   popupAddSave.setAttribute('disabled', true);
@@ -153,11 +162,22 @@ const handleEscClose = (evt) => {
   };
 };
 
+function createCard() {
+  const card = new Card({ name: popupAddName.value, link: popupAddLink.value }, '.card-template');
+  const cardElement = card.generateCard();
+  return cardElement
+}
+
 initialCards.forEach((item) => {
   const card = new Card(item, '.card-template', openPopup);
   const cardElement = card.generateCard();
 
   cards.append(cardElement);
 });
+
+const profileFormValidation = new FormValidator(config, popupProfileForm);
+profileFormValidation.enableValidation();
+const addCardFormValidation = new FormValidator(config, popupAddForm);
+addCardFormValidation.enableValidation();
 
 export {openPopup, popUpImage, imagePopup, imageFigcaption};
