@@ -3,6 +3,16 @@ import { initialCards } from "./initial-cards.js";
 import { FormValidator } from "./FormValidator.js";
 
 
+// объект настроек валидации
+const config = {
+  formSelector: '.popup__form',
+  inputSelector: '.popup__input',
+  submitButtonSelector: '.popup__save-btn',
+  inactiveButtonClass: 'popup__save-btn_inactive',
+  inputErrorClass: 'popup__input_type_error',
+  errorClass: 'popup__error-message_active'
+};
+
 // объявление попапа элементов профиля
 const popups = document.querySelectorAll('.popup');
 const popupProfileEditButton = document.querySelector(".profile__edit-button");
@@ -37,16 +47,6 @@ const imageFigcaption = popUpImage.querySelector(".popup__figcaption");
 // экземпляры валидации
 const profileFormValidation = new FormValidator(config, popupProfileForm);
 const addCardFormValidation = new FormValidator(config, popupAddForm);
-
-// объект настроек валидации
-export const config = {
-  formSelector: '.popup__form',
-  inputSelector: '.popup__input',
-  submitButtonSelector: '.popup__save-btn',
-  inactiveButtonClass: 'popup__save-btn_inactive',
-  inputErrorClass: 'popup__input_type_error',
-  errorClass: 'popup__error-message_active'
-};
 
 
 // фунция закрытия
