@@ -1,25 +1,15 @@
 import { Card } from "./Card.js";
-import { initialCards } from "./initial-cards.js";
+import { initialCards, validationConfig } from "./constants.js";
 import { FormValidator } from "./FormValidator.js";
 
-
-// объект настроек валидации
-const config = {
-  formSelector: '.popup__form',
-  inputSelector: '.popup__input',
-  submitButtonSelector: '.popup__save-btn',
-  inactiveButtonClass: 'popup__save-btn_inactive',
-  inputErrorClass: 'popup__input_type_error',
-  errorClass: 'popup__error-message_active'
-};
 
 // объявление попапа элементов профиля
 const popups = document.querySelectorAll('.popup');
 const popupProfileEditButton = document.querySelector(".profile__edit-button");
 const popUpProfile = document.querySelector(".popup_type_profile");
 const popupProfileCloseButton = popUpProfile.querySelector(".popup__close-btn");
-const popupProfileSaveButton = popUpProfile.querySelector(".popup__save-btn");
-const popupProfileContainer = popUpProfile.querySelector(".popup__container");
+// const popupProfileSaveButton = popUpProfile.querySelector(".popup__save-btn");
+// const popupProfileContainer = popUpProfile.querySelector(".popup__container");
 const profileName = document.querySelector(".profile__name");
 const profileStatus = document.querySelector(".profile__status");
 const popupProfileName = popUpProfile.querySelector(".popup__input_type_name");
@@ -45,8 +35,8 @@ const imagePopup = popUpImage.querySelector(".popup__image");
 const imageFigcaption = popUpImage.querySelector(".popup__figcaption");
 
 // экземпляры валидации
-const profileFormValidation = new FormValidator(config, popupProfileForm);
-const addCardFormValidation = new FormValidator(config, popupAddForm);
+const profileFormValidation = new FormValidator(validationConfig, popupProfileForm);
+const addCardFormValidation = new FormValidator(validationConfig, popupAddForm);
 
 
 // фунция закрытия
@@ -73,14 +63,14 @@ popupProfileCloseButton.addEventListener("click", function () {
 });
 
 // отправка формы
-function handleFormSubmit(evt) {
+function handleProfileFormSubmit(evt) {
   evt.preventDefault();
   profileName.textContent = popupProfileName.value;
   profileStatus.textContent = popupProfileStatus.value;
   closePopup(popUpProfile);
 };
 
-popupProfileForm.addEventListener("submit", handleFormSubmit);
+popupProfileForm.addEventListener("submit", handleProfileFormSubmit);
 
 // закрытие попапа картинки
 popupImageClose.addEventListener("click", function () {
@@ -97,23 +87,34 @@ popupAddClose.addEventListener("click", function () {
   closePopup(popUpAddCard);
 });
 
+const handleOpenPopup = (name, link) => {
+  openPopup(popUpImage);
+  imagePopup.src = link;
+  imagePopup.alt = name;
+  imageFigcaption.textContent = name;
+}
+
 // отправка формы добавления карточки
 function addCardHandleFormSubmit(evt) {
   evt.preventDefault();
-  cards.prepend(createCard());
+  cards.prepend(createCard({ name: popupAddName.value, link: popupAddLink.value }));
   closePopup(popUpAddCard);
   popupAddForm.reset();
-  popupAddSave.setAttribute('disabled', true);
-  popupAddSave.classList.add('popup__save-btn_inactive');
+  addCardFormValidation.disableSubmitButton();
 };
 
 popupAddForm.addEventListener("submit", addCardHandleFormSubmit);
 
-function createCard() {
-  const card = new Card({ name: popupAddName.value, link: popupAddLink.value }, '.card-template');
-  const cardElement = card.generateCard();
-  return cardElement
+function createCard(item) {
+  const card = new Card(item, '.card-template', handleOpenPopup);
+  return card.generateCard();
+  
 }
+
+// получение карточек из объекта
+initialCards.forEach((item) => {
+  cards.append(createCard(item));
+});
 
 // Закрытие по оверлею
 popups.forEach((popup) => {
@@ -132,16 +133,7 @@ const handleEscClose = (evt) => {
   };
 };
 
-// получение карточек из объекта
-initialCards.forEach((item) => {
-  const card = new Card(item, '.card-template', openPopup);
-  const cardElement = card.generateCard();
-
-  cards.append(cardElement);
-});
-
 // включение валидации форм
 profileFormValidation.enableValidation();
 addCardFormValidation.enableValidation();
 
-export {popUpImage, imagePopup, imageFigcaption};

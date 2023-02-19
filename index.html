@@ -21,11 +21,11 @@
             />
             <div class="profile__info">
               <h1 class="profile__name">Жак-Ив Кусто</h1>
-              <button class="profile__edit-button" type="button"></button>
+              <button class="profile__edit-button" type="button" aria-label="Редактирование профиля"></button>
               <p class="profile__status">Исследователь океана</p>
             </div>
           </div>
-          <button class="profile__add-button" type="button"></button>
+          <button class="profile__add-button" type="button" aria-label="Добавление карточки"></button>
         </section>
         <section class="elements">
           <ul class="elements__list"></ul>
@@ -42,7 +42,6 @@
               class="popup__input popup__input_type_name"
               id="profile-name"
               type="text"
-              value=""
               placeholder="Имя"
               required
               name="name"
@@ -54,7 +53,6 @@
               class="popup__input popup__input_type_status"
               id="profile-job"
               type="text"
-              value=""
               placeholder="О себе"
               required
               name="job"
@@ -64,7 +62,7 @@
             <span class="popup__error-message profile-job-error"></span>
             <button class="popup__save-btn" type="submit">Сохранить</button>
           </form>
-          <button class="popup__close-btn" type="button"></button>
+          <button class="popup__close-btn" type="button" aria-label="Закрыть"></button>
         </div>
       </div>
       <div class="popup popup_type_card">
@@ -75,7 +73,6 @@
               class="popup__input popup__input_type_name"
               id="card-name"
               type="text"
-              value=""
               placeholder="Название"
               required
               name="name"
@@ -87,7 +84,6 @@
               class="popup__input popup__input_type_link"
               id="card-url"
               type="url"
-              value=""
               placeholder="Ссылка на картинку"
               required
               name="link"
@@ -95,23 +91,23 @@
             <span class="popup__error-message card-url-error"></span>
             <button class="popup__save-btn" type="submit">Создать</button>
           </form>
-          <button class="popup__close-btn" type="button"></button>
+          <button class="popup__close-btn" type="button" aria-label="Закрыть"></button>
         </div>
       </div>
       <div class="popup popup_type_image">
         <figure class="popup__image-container">
           <img src="#" alt="#" class="popup__image" />
           <figcaption class="popup__figcaption"></figcaption>
-          <button class="popup__close-btn" type="button"></button>
+          <button class="popup__close-btn" type="button" aria-label="Закрыть"></button>
         </figure>
       </div>
       <template class="card-template">
         <li class="elements__item card">
           <img src="#" alt="#" class="card__img" />
-          <button class="card__delete-btn" type="button"></button>
+          <button class="card__delete-btn" type="button" aria-label="Удаление карточки"></button>
           <div class="card__img-bar">
             <h2 class="card__name"></h2>
-            <button class="card__like-button" type="button"></button>
+            <button class="card__like-button" type="button" aria-label="Нравится"></button>
           </div>
         </li>
       </template>
