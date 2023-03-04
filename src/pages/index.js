@@ -3,9 +3,9 @@ import Section from "../components/Section.js";
 import Popup from "../components/Popup.js";
 import PopupWithImage from "../components/PopupWithImage.js";
 import UserInfo from "../components/UserInfo.js";
-import { Card } from "./Card.js";
-import { initialCards, validationConfig } from "./constants.js";
-import { FormValidator } from "./FormValidator.js";
+import { Card } from "../components/Card.js";
+import { initialCards, validationConfig } from "../utils/constants.js";
+import { FormValidator } from "../components/FormValidator.js";
 
 
 // объявление попапа элементов профиля
