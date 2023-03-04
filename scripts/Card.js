@@ -1,5 +1,5 @@
 export class Card {
-  constructor(data, templateSelector, handleOpenPopup) {
+  constructor(data, handleCardClick, templateSelector) {
     this._name = data.name;
     this._link = data.link;
     this._templateSelector = templateSelector;
@@ -8,7 +8,7 @@ export class Card {
     this._cardImg = this._element.querySelector(".card__img");
     this._cardName = this._element.querySelector(".card__name");
     this._deleteButton = this._element.querySelector(".card__delete-btn");
-    this._handleOpenPopup = handleOpenPopup;
+    this._handleCardClick = handleCardClick;
   }
 
   _getTemplate() {
@@ -42,7 +42,7 @@ export class Card {
         this._element.remove();
       });
     this._cardImg.addEventListener("click", () => {
-      this._handleOpenPopup(this._name, this._link);
+      this._handleCardClick(this._name, this._link);
     });
   }
 }
