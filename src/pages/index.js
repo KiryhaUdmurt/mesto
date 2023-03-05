@@ -20,6 +20,7 @@ import UserInfo from "../components/UserInfo.js";
 import Card from "../components/Card.js";
 import FormValidator from "../components/FormValidator.js";
 
+
 // экземпляры валидации
 const profileFormValidation = new FormValidator(
   validationConfig,
@@ -37,7 +38,7 @@ const handleCardClick = (name, link) => {
   popupWithImage.open(name, link);
 };
 
-function createCard(item) {
+const  createCard = (item) => {
   const card = new Card(item, handleCardClick, ".card-template");
   return card.generateCard();
 }
