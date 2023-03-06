@@ -82,6 +82,8 @@ popupProfileEditButton.addEventListener("click", () => {
   const info = userInfo.getUserInfo();
   popupProfileName.value = info.name;
   popupProfileStatus.value = info.info;
+  // editProfilePopup.setInputValues(info);
+  profileFormValidation.resetValidation();
   editProfilePopup.open();
 });
 
@@ -89,7 +91,7 @@ const cardAddPopup = new PopupWithForm(
   {
     handleFormSubmit: (data) => {
       const card = createCard(data);
-      cards.prepend(card);
+      cardList.prependItem(card);
       cardAddPopup.close();
       addCardFormValidation.disableSubmitButton();
     },
@@ -100,5 +102,6 @@ const cardAddPopup = new PopupWithForm(
 cardAddPopup.setEventListeners();
 
 popupAddCardButton.addEventListener("click", () => {
+  addCardFormValidation.resetValidation();
   cardAddPopup.open();
 });

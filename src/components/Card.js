@@ -34,15 +34,23 @@ export default class Card {
     this._likeButton.classList.toggle("card__like-button_active");
   }
 
+  _deleteCard() {
+    this._element.remove();
+  }
+
+  _handleImageClick() {
+    this._handleCardClick(this._name, this._link);
+  }
+
   _setEventListeners() {
     this._likeButton.addEventListener("click", () => {
         this._handleLikeButton();
       });
     this._deleteButton.addEventListener("click", () => {
-        this._element.remove();
+        this._deleteCard();
       });
     this._cardImg.addEventListener("click", () => {
-      this._handleCardClick(this._name, this._link);
+      this._handleImageClick();
     });
   }
 }
