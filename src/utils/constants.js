@@ -41,6 +41,9 @@ export const popupProfileName = popUpProfile.querySelector(".popup__input_type_n
 export const popupProfileStatus = popUpProfile.querySelector(".popup__input_type_status");
 export const popupProfileForm = popUpProfile.querySelector(".popup__form");
 
+export const userName = document.querySelector('.profile__name');
+export const userStatus = document.querySelector('.profile__status');
+
 // Попап добавления карточки
 export const popUpAddCard = document.querySelector(".popup_type_card");
 export const popupAddForm = popUpAddCard.querySelector(".popup__form");

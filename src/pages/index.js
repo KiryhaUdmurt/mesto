@@ -13,7 +13,10 @@ import {
   popUpImage,
   initialCards,
   validationConfig,
+  userName,
+  userStatus,
 } from "../utils/constants.js";
+import Api from '../components/Api.js';
 import PopupWithForm from "../components/PopupWithForm.js";
 import Section from "../components/Section.js";
 import Popup from "../components/Popup.js";
@@ -21,6 +24,24 @@ import PopupWithImage from "../components/PopupWithImage.js";
 import UserInfo from "../components/UserInfo.js";
 import Card from "../components/Card.js";
 import FormValidator from "../components/FormValidator.js";
+
+const api = new Api('https://mesto.nomoreparties.co', 'a3c18fa0-3704-4ba8-ba34-414472677779');
+api.getInitialCards().then((data) => {
+  const cardList = new Section(
+    {
+      items: data,
+      renderer: (item) => {
+        const card = createCard(item);
+        cardList.addItem(card);
+      },
+    },
+    cards
+  );
+  
+  cardList.renderItems();
+}).catch((err) => {
+  console.log(err);
+})
 
 
 // экземпляры валидации
@@ -45,31 +66,41 @@ const  createCard = (item) => {
   return card.generateCard();
 }
 
-const cardList = new Section(
-  {
-    items: initialCards,
-    renderer: (item) => {
-      const card = createCard(item);
-      cardList.addItem(card);
-    },
-  },
-  cards
-);
+// const cardList = new Section(
+//   {
+//     items: initialCards,
+//     renderer: (item) => {
+//       const card = createCard(item);
+//       cardList.addItem(card);
+//     },
+//   },
+//   cards
+// );
 
-cardList.renderItems();
+// cardList.renderItems();
 
 const userInfo = new UserInfo({
   profileName: ".profile__name",
   profileInfo: ".profile__status",
 });
 
+api.getUserInformation().then((res) => {
+  userName.textContent = res.name;
+  userStatus.textContent = res.about;
+})
+.catch((err) => console.log(err));
+
+
 const editProfilePopup = new PopupWithForm(
   {
     handleFormSubmit: (data) => {
-      userInfo.setUserInfo({
-        name: data.name,
-        info: data.job,
-      });
+      api.changeProfileInfo().then((res) => {
+        
+        userInfo.setUserInfo({
+          name: res.name,
+          info: res.job,
+        });
+      })
       editProfilePopup.close();
     },
   },
