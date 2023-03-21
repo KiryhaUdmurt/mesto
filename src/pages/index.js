@@ -66,23 +66,9 @@ const  createCard = (item) => {
   return card.generateCard();
 }
 
-// const cardList = new Section(
-//   {
-//     items: initialCards,
-//     renderer: (item) => {
-//       const card = createCard(item);
-//       cardList.addItem(card);
-//     },
-//   },
-//   cards
-// );
 
-// cardList.renderItems();
 
-const userInfo = new UserInfo({
-  profileName: ".profile__name",
-  profileInfo: ".profile__status",
-});
+
 
 api.getUserInformation().then((res) => {
   userName.textContent = res.name;
@@ -90,16 +76,20 @@ api.getUserInformation().then((res) => {
 })
 .catch((err) => console.log(err));
 
+const userInfo = new UserInfo({
+  profileName: ".profile__name",
+  profileInfo: ".profile__status",
+});
 
 const editProfilePopup = new PopupWithForm(
   {
     handleFormSubmit: (data) => {
-      api.changeProfileInfo().then((res) => {
-        
-        userInfo.setUserInfo({
-          name: res.name,
-          info: res.job,
-        });
+      api.changeProfileInfo(data)
+        .then((res) => {
+          userInfo.setUserInfo({
+            name: res.name,
+            info: res.about
+          });
       })
       editProfilePopup.close();
     },
@@ -118,10 +108,15 @@ popupProfileEditButton.addEventListener("click", () => {
   editProfilePopup.open();
 });
 
+
+
+
 const cardAddPopup = new PopupWithForm(
   {
     handleFormSubmit: (data) => {
+      console.log(data)
       const card = createCard(data);
+      console.log(card)
       cardList.prependItem(card);
       cardAddPopup.close();
       addCardFormValidation.disableSubmitButton();
