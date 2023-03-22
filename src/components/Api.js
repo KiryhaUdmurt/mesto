@@ -34,7 +34,7 @@ export default class Api {
     }
 
     changeProfileInfo(data) {
-        return fetch(`${this._baseUrl}/cohort-61/users/me`, {
+        return fetch(`${this._baseUrl}/v1/cohort-61/users/me`, {
             method: 'PATCH',
             headers: this._getHeaders(),
             body: JSON.stringify({
@@ -46,7 +46,7 @@ export default class Api {
     }
 
     addCard(data) {
-        return fetch(`${this._baseUrl}/cohort-61/cards`, {
+        return fetch(`${this._baseUrl}/v1/cohort-61/cards`, {
             method: 'POST',
             headers: this._getHeaders(),
             body: JSON.stringify({
@@ -55,5 +55,13 @@ export default class Api {
             })
         })
         .then(this._getJson);
+    }
+
+    deleteCard(_id) {
+        return fetch(`${this._baseUrl}/v1/cohort-61/cards/${_id}`, {
+            method: 'DELETE',
+            headers: this._getHeaders(),
+        })
+        .then(this._getJson)
     }
 }
