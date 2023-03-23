@@ -80,4 +80,15 @@ export default class Api {
         })
         .then(this._getJson)
     }
+
+    changeAvatar(data) {
+        return fetch(`${this._baseUrl}/v1/cohort-61/users/me/avatar`, {
+            method: 'PATCH',
+            headers: this._getHeaders(),
+            body: JSON.stringify({
+                avatar: data.avatar
+            })
+        })
+        .then(this._getJson);
+    }
 }
