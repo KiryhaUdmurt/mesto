@@ -57,8 +57,24 @@ export default class Api {
         .then(this._getJson);
     }
 
-    deleteCard(_id) {
-        return fetch(`${this._baseUrl}/v1/cohort-61/cards/${_id}`, {
+    deleteCard(id) {
+        return fetch(`${this._baseUrl}/v1/cohort-61/cards/${id}`, {
+            method: 'DELETE',
+            headers: this._getHeaders(),
+        })
+        .then(this._getJson)
+    }
+
+    addLike(id) {
+        return fetch(`${this._baseUrl}/v1/cohort-61/cards/${id}/likes`, {
+            method: 'PUT',
+            headers: this._getHeaders(),
+        })
+        .then(this._getJson)
+    }
+
+    deleteLike(id) {
+        return fetch(`${this._baseUrl}/v1/cohort-61/cards/${id}/likes`, {
             method: 'DELETE',
             headers: this._getHeaders(),
         })

@@ -44,52 +44,11 @@ const cardList = new Section({
   }
 }, cards)
 
-    
-// экземпляры валидации
-const profileFormValidation = new FormValidator(
-  validationConfig,
-  popupProfileForm
-);
-const addCardFormValidation = new FormValidator(validationConfig, popupAddForm);
-
-profileFormValidation.enableValidation();
-addCardFormValidation.enableValidation();
-
 const popupWithImage = new PopupWithImage(".popup_type_image");
 popupWithImage.setEventListeners();
 
 const popupWithSubmit = new PopupWithSubmit(".popup_type_delete");
 popupWithSubmit.setEventListeners();
-
-// const handleCardClick = (name, link) => {
-//   popupWithImage.open(name, link);
-// };
-
-const  createCard = (data) => {
-  const card = new Card({
-    data: data,
-    handleCardClick: () => {
-      popupWithImage.open(data);
-    },
-    handleLike: () => {
-
-    },
-    handleDelete: () => {
-      popupWithSubmit.open();
-      popupWithSubmit.setSubmit(() => {
-        api.deleteCard(card.getId())
-          .then(() => {
-            card.deleteCard();
-            popupWithSubmit.close();
-          })
-          .catch((err) => {
-            console.log(err)
-          })
-      })
-    }},
-    ".card-template");
-  return card.generateCard();
-}
 
 
 
@@ -112,12 +71,13 @@ const editProfilePopup = new PopupWithForm(
     handleFormSubmit: (data) => {
       api.changeProfileInfo(data)
         .then((data) => {
-          userInfo.setUserInfo({
-            name: data.name,
-            info: data.about
-          });
+          console.log(data)
+          userInfo.setUserInfo(data);
+          editProfilePopup.close();
       })
-      editProfilePopup.close();
+      .catch((err) => {
+        console.log(err);
+      })
     },
   },
   ".popup_type_profile"
@@ -127,6 +87,7 @@ editProfilePopup.setEventListeners();
 
 popupProfileEditButton.addEventListener("click", () => {
   const info = userInfo.getUserInfo();
+  console.log(info)
   popupProfileName.value = info.name;
   popupProfileStatus.value = info.info;
   profileFormValidation.resetValidation();
@@ -134,6 +95,47 @@ popupProfileEditButton.addEventListener("click", () => {
 });
 
 
+const  createCard = (data) => {
+  const card = new Card({
+    data: data,
+    userId: userInfo.getUserId(),
+    handleCardClick: () => {
+      popupWithImage.open(data);
+    },
+    handleLikeAdd: () => {
+      api.addLike(card.getId())
+      .then((data) => {
+        card.handleLikeCard(data);
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+    },
+    handleLikeDelete: () => {
+      api.deleteLike(card.getId())
+      .then((data) => {
+        card.handleLikeCard(data);
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+    },
+    handleDelete: () => {
+      popupWithSubmit.open();
+      popupWithSubmit.setSubmit(() => {
+        api.deleteCard(card.getId())
+          .then(() => {
+            card.deleteCard();
+            popupWithSubmit.close();
+          })
+          .catch((err) => {
+            console.log(err);
+          })
+      })
+    }},
+    ".card-template");
+  return card.generateCard();
+}
 
 
 const cardAddPopup = new PopupWithForm(
@@ -157,3 +159,14 @@ popupAddCardButton.addEventListener("click", () => {
   addCardFormValidation.resetValidation();
   cardAddPopup.open();
 });
+
+
+// экземпляры валидации
+const profileFormValidation = new FormValidator(
+  validationConfig,
+  popupProfileForm
+);
+const addCardFormValidation = new FormValidator(validationConfig, popupAddForm);
+
+profileFormValidation.enableValidation();
+addCardFormValidation.enableValidation();
