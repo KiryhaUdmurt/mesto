@@ -15,6 +15,10 @@ import {
   validationConfig,
   userName,
   userStatus,
+  popupAvatarEditButton,
+  popupAvatar,
+  popupAvatarForm,
+  avatar,
 } from "../utils/constants.js";
 import Api from '../components/Api.js';
 import PopupWithForm from "../components/PopupWithForm.js";
@@ -25,6 +29,7 @@ import UserInfo from "../components/UserInfo.js";
 import Card from "../components/Card.js";
 import FormValidator from "../components/FormValidator.js";
 import PopupWithSubmit from '../components/PopupWithSubmit.js';
+import { data } from 'autoprefixer';
 
 const api = new Api('https://mesto.nomoreparties.co', 'a3c18fa0-3704-4ba8-ba34-414472677779');
 
@@ -50,15 +55,6 @@ popupWithImage.setEventListeners();
 const popupWithSubmit = new PopupWithSubmit(".popup_type_delete");
 popupWithSubmit.setEventListeners();
 
-
-
-
-
-// api.getUserInformation().then((res) => {
-//   userName.textContent = res.name;
-//   userStatus.textContent = res.about;
-// })
-// .catch((err) => console.log(err));
 
 const userInfo = new UserInfo({
   profileName: ".profile__name",
@@ -93,6 +89,30 @@ popupProfileEditButton.addEventListener("click", () => {
   profileFormValidation.resetValidation();
   editProfilePopup.open();
 });
+
+const editAvatarPopup = new PopupWithForm(
+  {
+    handleFormSubmit: (data) => {
+      console.log(data)
+      api.changeAvatar(data)
+      .then((data) => {
+        console.log(data)
+        userInfo.setUserInfo(data);
+        editAvatarPopup.close();
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+    }
+  },
+  ".popup_type_avatar"
+);
+
+editAvatarPopup.setEventListeners();
+
+popupAvatarEditButton.addEventListener('click', () => {
+  editAvatarPopup.open();
+})
 
 
 const  createCard = (data) => {
@@ -162,11 +182,10 @@ popupAddCardButton.addEventListener("click", () => {
 
 
 // экземпляры валидации
-const profileFormValidation = new FormValidator(
-  validationConfig,
-  popupProfileForm
-);
+const profileFormValidation = new FormValidator(validationConfig,popupProfileForm);
 const addCardFormValidation = new FormValidator(validationConfig, popupAddForm);
+const avatarFormValidation = new FormValidator(validationConfig, popupAvatarForm);
 
 profileFormValidation.enableValidation();
 addCardFormValidation.enableValidation();
+avatarFormValidation.enableValidation();

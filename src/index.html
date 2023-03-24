@@ -104,10 +104,10 @@
         </figure>
       </div>
       <div class="popup popup_type_delete">
-        <div class="popup__container popup__container_del">
+        <div class="popup__container">
           <h2 class="popup__title">Вы уверены?</h2>
-          <form class="popup__form" name="popup-delete-card" novalidate>
-            <button class="popup__delete-btn">Да</button>
+          <form class="popup__form popup__form-delete" name="popup-delete-card" novalidate>
+            <button class="popup__save-btn" type="submit">Да</button>
           </form>
           <button class="popup__close-btn" type="button" aria-label="Закрыть"></button>
         </div>
@@ -117,12 +117,12 @@
           <h2 class="popup__title">Обновить аватар</h2>
           <form class="popup__form" name="popup-change-avatar" novalidate>
             <input
-              class="popup__input popup__input_type_avatarUrl"
+              class="popup__input popup__input_type_avatar-url"
               id="avatar-url"
               type="url"
               placeholder="Ссылка на картинку"
               required
-              name="link"
+              name="avatar"
             />
             <span class="popup__error-message avatar-url-error"></span>
             <button class="popup__save-btn" type="submit">Сохранить</button>
