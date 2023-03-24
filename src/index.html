@@ -8,7 +8,11 @@
   <body class="root">
     <div class="page">
       <header class="header">
-        <img class="header__logo" src="<%=require('./images/logo.svg')%>" alt="Логотип Место" />
+        <img
+          class="header__logo"
+          src="<%=require('./images/logo.svg')%>"
+          alt="Логотип Место"
+        />
       </header>
       <main class="content">
         <section class="profile">
@@ -23,11 +27,19 @@
             </div>
             <div class="profile__info">
               <h1 class="profile__name">Жак-Ив Кусто</h1>
-              <button class="profile__edit-button" type="button" aria-label="Редактирование профиля"></button>
+              <button
+                class="profile__edit-button"
+                type="button"
+                aria-label="Редактирование профиля"
+              ></button>
               <p class="profile__status">Исследователь океана</p>
             </div>
           </div>
-          <button class="profile__add-button" type="button" aria-label="Добавление карточки"></button>
+          <button
+            class="profile__add-button"
+            type="button"
+            aria-label="Добавление карточки"
+          ></button>
         </section>
         <section class="elements">
           <ul class="elements__list"></ul>
@@ -64,7 +76,11 @@
             <span class="popup__error-message profile-job-error"></span>
             <button class="popup__save-btn" type="submit">Сохранить</button>
           </form>
-          <button class="popup__close-btn" type="button" aria-label="Закрыть"></button>
+          <button
+            class="popup__close-btn"
+            type="button"
+            aria-label="Закрыть"
+          ></button>
         </div>
       </div>
       <div class="popup popup_type_card">
@@ -93,23 +109,39 @@
             <span class="popup__error-message card-url-error"></span>
             <button class="popup__save-btn" type="submit">Создать</button>
           </form>
-          <button class="popup__close-btn" type="button" aria-label="Закрыть"></button>
+          <button
+            class="popup__close-btn"
+            type="button"
+            aria-label="Закрыть"
+          ></button>
         </div>
       </div>
       <div class="popup popup_type_image">
         <figure class="popup__image-container">
           <img src="#" alt="#" class="popup__image" />
           <figcaption class="popup__figcaption"></figcaption>
-          <button class="popup__close-btn" type="button" aria-label="Закрыть"></button>
+          <button
+            class="popup__close-btn"
+            type="button"
+            aria-label="Закрыть"
+          ></button>
         </figure>
       </div>
       <div class="popup popup_type_delete">
         <div class="popup__container">
           <h2 class="popup__title">Вы уверены?</h2>
-          <form class="popup__form popup__form-delete" name="popup-delete-card" novalidate>
+          <form
+            class="popup__form popup__form-delete"
+            name="popup-delete-card"
+            novalidate
+          >
             <button class="popup__save-btn" type="submit">Да</button>
           </form>
-          <button class="popup__close-btn" type="button" aria-label="Закрыть"></button>
+          <button
+            class="popup__close-btn"
+            type="button"
+            aria-label="Закрыть"
+          ></button>
         </div>
       </div>
       <div class="popup popup_type_avatar">
@@ -127,16 +159,28 @@
             <span class="popup__error-message avatar-url-error"></span>
             <button class="popup__save-btn" type="submit">Сохранить</button>
           </form>
-          <button class="popup__close-btn" type="button" aria-label="Закрыть"></button>
+          <button
+            class="popup__close-btn"
+            type="button"
+            aria-label="Закрыть"
+          ></button>
         </div>
       </div>
       <template class="card-template">
         <li class="elements__item card">
           <img src="#" alt="#" class="card__img" />
-          <button class="card__delete-btn" type="button" aria-label="Удаление карточки"></button>
+          <button
+            class="card__delete-btn"
+            type="button"
+            aria-label="Удаление карточки"
+          ></button>
           <div class="card__img-bar">
             <h2 class="card__name"></h2>
-            <button class="card__like-button" type="button" aria-label="Нравится"></button>
+            <button
+              class="card__like-button"
+              type="button"
+              aria-label="Нравится"
+            ></button>
             <span class="card__like-number">0</span>
           </div>
         </li>
