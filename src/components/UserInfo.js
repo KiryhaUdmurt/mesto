@@ -14,10 +14,18 @@ export default class UserInfo {
   }
 
   setUserInfo(data) {
-    this._name.textContent = data.name;
-    this._info.textContent = data.about;
-    this._avatar.src = data.avatar;
-    this._id = data._id;
+    if (data.name) {
+      this._name.textContent = data.name;
+    };
+    if (data.about) {
+      this._info.textContent = data.about;
+    };
+    if (data.avatar) {
+      this._avatar.src = data.avatar;
+    };
+    if (data._id) {
+      this._id = data._id;
+    };
   }
 
   getUserId() {

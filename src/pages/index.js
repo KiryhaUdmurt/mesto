@@ -75,7 +75,6 @@ const editProfilePopup = new PopupWithForm(
       api
         .changeProfileInfo(data)
         .then((data) => {
-          console.log(data);
           userInfo.setUserInfo(data);
           editProfilePopup.close();
         })
@@ -94,7 +93,6 @@ editProfilePopup.setEventListeners();
 
 popupProfileEditButton.addEventListener("click", () => {
   const info = userInfo.getUserInfo();
-  console.log(info);
   popupProfileName.value = info.name;
   popupProfileStatus.value = info.info;
   profileFormValidation.resetValidation();
@@ -110,7 +108,6 @@ const editAvatarPopup = new PopupWithForm(
       api
         .changeAvatar(data)
         .then((data) => {
-          console.log(data);
           userInfo.setUserInfo(data);
           editAvatarPopup.close();
         })
@@ -128,6 +125,7 @@ const editAvatarPopup = new PopupWithForm(
 editAvatarPopup.setEventListeners();
 
 popupAvatarEditButton.addEventListener("click", () => {
+  avatarFormValidation.resetValidation();
   editAvatarPopup.open();
 });
 
@@ -190,6 +188,8 @@ const cardAddPopup = new PopupWithForm(
         .then((data) => {
           const card = createCard(data);
           cardList.prependItem(card);
+          cardAddPopup.close();
+          addCardFormValidation.disableSubmitButton();
         })
         .catch((err) => {
           console.log(err);
@@ -197,8 +197,6 @@ const cardAddPopup = new PopupWithForm(
         .finally(() => {
           cardAddPopup.loading(false);
         });
-      cardAddPopup.close();
-      addCardFormValidation.disableSubmitButton();
     },
   },
   ".popup_type_card"
